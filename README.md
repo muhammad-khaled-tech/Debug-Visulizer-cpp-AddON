@@ -1,192 +1,161 @@
-# Debug Visualizer
+# 🚀 Antigravity Debug Visualizer
 
-[![](https://img.shields.io/twitter/follow/hediet_dev.svg?style=social)](https://twitter.com/intent/follow?screen_name=hediet_dev)
+<div align="center">
 
-A VS Code extension for visualizing data structures while debugging.
-Like the VS Code's watch view, but with rich visualizations of the watched value.
+**Enhanced C++ Data Structure Visualization for VS Code**
 
-![](../docs/demo.gif)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue?style=for-the-badge)](https://github.com/muhammad-khaled-tech/Debug-Visulizer-cpp-AddON/releases)
+[![VS Code](https://img.shields.io/badge/VS%20Code-Extension-007ACC?style=for-the-badge&logo=visual-studio-code)](https://code.visualstudio.com)
+[![License](https://img.shields.io/badge/license-GPL--3.0-orange?style=for-the-badge)](LICENSE.md)
 
-## [Visualization Playground](https://hediet.github.io/visualization/)
+[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Examples](#-examples)
 
-Click [here](https://hediet.github.io/visualization/) to explore all available visualizations.
+</div>
 
-## Supported Languages
+---
 
-See [demos](../demos/) for demos. These languages and debuggers are verified to work with this extension:
+## ✨ What Makes This Special?
 
--   JavaScript/TypeScript/... using `node`/`node2`/`extensionHost`/`chrome`/`pwa-chrome`/`pwa-node` debug adapter: [⭐ Full Support](../demos/js)
--   Dart/Flutter using `dart` debug adapter: [✅ Basic Support](../demos/dart)
--   Go using `go` (Delve) debug adapter: [✅ Basic Support](../demos/golang)
--   Python using `python` debug adapter: [✅ Basic Support](../demos/python)
--   C# using `coreclr` debug adapter: [✅ Basic Support](../demos/csharp) (work in progress for Full Support)
--   PHP using `php` debug adapter: [✅ Basic Support](../demos/php)
--   Java using `java` debug adapter: [✅ Basic Support](../demos/java)
--   C++ using `cppdbg` debug adapter: [✅ Basic Support](../demos/cpp)
--   Swift using `lldb` debug adapter: [✅ Basic Support](../demos/swift)
--   Rust using `lldb` debug adapter: [✅ Basic Support](../demos/rust)
--   Ruby using `rdbg` debug adapter: [✅ Basic Support](../demos/ruby)
+This is an **enhanced fork** of the popular Debug Visualizer extension, supercharged with:
 
-All other languages and debuggers might work too.
-For languages with _Basic Support_, only JSON strings can be visualized - you must implement some logic that builds this JSON for your data structure!
-Fully supported languages offer _Data Extractors_ which convert some well known data structures to json.
+- 🎨 **Beautiful SVG visualizations** for arrays, linked lists, and trees
+- 🎬 **Swap animations** for sorting algorithms (bubble sort, quicksort, etc.)
+- 📊 **Stack & Queue** visualizations with push/pop animations
+- 🎯 **Color-coded pointers** (i=orange, j=purple, left=green, right=red)
+- 📹 **GIF recording** - export your debugging sessions!
+- ⚡ **Zero setup** - works in ANY C++ project automatically!
 
-## Usage
+---
 
-After installing this extension, use the command `Debug Visualizer: New View` to open a new visualizer view.
-In this view you can enter an expression that is evaluated and visualized while stepping through your application.
-This view works the same as the watch view of VS Code, except that the resulting value is presented visually rather than textually and you can only watch one expression (but you can still open multiple windows).
+## 📥 Installation
 
-Use the command `Debug Visualizer: Use Selection as Expression` _(Shift + F1)_ to use the currently selected text as expression
-in the most recently opened debug visualizer.
+### Option 1: Download from Releases (Recommended)
+1. Go to [Releases](https://github.com/muhammad-khaled-tech/Debug-Visulizer-cpp-AddON/releases)
+2. Download `antigravity-debug-visualizer.vsix`
+3. In VS Code: `Extensions` → `...` menu → `Install from VSIX`
+4. Select the downloaded file
 
-## Supported Values
+### Option 2: One-liner
+```bash
+git clone https://github.com/muhammad-khaled-tech/Debug-Visulizer-cpp-AddON.git
+code --install-extension Debug-Visulizer-cpp-AddON/dist/extension.vsix
+```
 
-Not all values can be processed.
-Visualizers consume specific JSON data. This extension uses [hediet/visualization](https://github.com/hediet/visualization), a generic visualization framework.
-You can see in its [playground](https://hediet.github.io/visualization/) which data can be visualized and how the visualization looks like.
+### Python Dependencies (Optional - for GIF export)
+```bash
+pip install cairosvg pillow
+```
 
-The currently watched expression should evaluate to a JSON Object string,
-matching the [schema](https://hediet.github.io/visualization/docs/visualization-data-schema.json) of one of the supported visualizers. This JSON string may be surrounded by single or double quotation marks (or none at all) and must not be escaped.
-A valid example is `"{ "kind": { "text": true }, "text": "some text\nmore text" }"`.
-Use the watch window to see what an expression evaluates to. This extension simply interprets that result.
+---
 
-For some languages (TypeScript/JavaScript), runtime code is injected to support _Data Extractors_.
-A Data Extractor lifts the requirement for the visualized value to be a JSON string
-and acts as a bridge between custom data structures and the JSON data processed by the visualizers.
-When multiple Data Extractors are applicable, a preferred one can be selected in the visualization view.
+## 🎯 Usage
 
-There is a [JSON Schema for all supported visualizations](https://hediet.github.io/visualization/docs/visualization-data-schema.json) and a [typescript declaration file](https://hediet.github.io/visualization/docs/visualization-data.ts).
+1. **Open any C++ project** - No `.vscode` folder needed!
+2. **Start debugging** with GDB (press `F5`)
+3. **Open visualizer**: `Ctrl+Shift+P` → `Debug Visualizer: New View`
+4. **Type your variable name**: `arr`, `head`, `root`, etc.
 
-## Selected Demos
+### Supported Data Structures
 
-### Reversing a Doubly Linked List
+| Type | What to Type | Visualization |
+|------|--------------|---------------|
+| Array | `arr` | SVG boxes with values |
+| Vector | `vec` | SVG container |
+| Linked List | `head` | Graph with arrows |
+| Binary Tree | `root` | Tree layout |
+| Stack | `stack` (with `top` variable) | Vertical boxes |
+| Queue | `queue` (with `front`/`rear`) | Horizontal boxes |
 
-![](../docs/doubly-linked-list-reverse-demo.gif)
+---
 
-### Random Walk
+## 🎨 Pointer Color Legend
 
-![](../docs/visualization-plotly-random-walk.gif)
+When visualizing sorting algorithms, pointers are color-coded:
 
-### Ast Visualizer
+| Variable | Color | Use Case |
+|:--------:|:-----:|:---------|
+| `i` | 🟠 Orange | Outer loop |
+| `j` | 🟣 Purple | Inner loop |
+| `left` | 🟢 Green | Left boundary |
+| `right` | 🔴 Red | Right boundary |
+| `mid` | 🟡 Yellow | Binary search |
+| `pivot` | 🩷 Pink | QuickSort |
 
-![](../docs/ast-demo.gif)
+---
 
-### Table Visualizer
+## 📸 Examples
 
-![](../docs/table-demo.gif)
-
-## JavaScript/TypeScript Integrated Data Extractors
-
-Data extractors convert arbitrary values into data consumable by visualizers.
-They live in the debugee. The following data extractors are injected automatically into the debugee by this extension when using the `node`, `node2`, `extensionHost`, `chrome` or `pwa-chrome` debug adapter.
-Custom data extractors can be registered too.
-See the package `@hediet/debug-visualizer-data-extraction` and its [README](../data-extraction/README.md) for the implementation and its API.
-Also, a global object of name `hedietDbgVis` with helper functions is injected.
-
--   **ToString**
-    -   Just calls `.toString()` on values and treats the result as text.
--   **TypeScript AST**
-    -   Direct Visualization of `ts.Node`s
-    -   Visualization of `Record<string, ts.Node>` and `ts.Node[]`. If the record contains a key `fn`, its value is displayed for each node.
--   **As Is Data Extractor**
-    -   Treats the data as direct input to the visualizer.
--   **Use Method 'getVisualizationData'**
-    -   Calls `.getVisualizationData()` on values and treats the result as direct input to the visualizer.
--   **Plotly y-Values**
-    -   Uses plotly to plot an array of numbers.
--   **Object Graph**
-    -   Constructs a graph containing all objects reachable from object the expression evaluates to.
-        Graph is constructed using a breadth search. Stops after 50 nodes.
--   **Array Grid**
-    -   Creates Grid visualization data for an array.
-
-## UI Features
-
--   **Multi-line Expressions**: Press `shift+enter` to add a new line and `ctrl+enter` to evaluate the expression.
-    When only having a single line, `enter` submits the current expression,
-    but when having multiple lines, `enter` inserts another line break.
-
-    ![](../docs/multiline-expression.png)
-
-## Configuration
-
-This extension provides these configuration options:
-
-### **debugVisualizer.debugAdapterConfigurations**
-
-Allows to set expression templates for specific debug adapter types.
-Example:
-
-```json
-"debugVisualizer.debugAdapterConfigurations": {
-    "lldb": {
-        "expressionTemplate": "script to_json(\"${expr}\")",
-        "context": "repl"
+### Bubble Sort with Swap Animation
+```cpp
+int arr[7] = {64, 34, 25, 12, 22, 11, 90};
+for (int i = 0; i < n-1; i++) {
+    for (int j = 0; j < n-i-1; j++) {
+        if (arr[j] > arr[j+1]) {
+            swap(arr[j], arr[j+1]);
+            // Visualizer shows animated swap!
+        }
     }
 }
+// Type "arr" in Debug Visualizer - see i, j pointers move!
 ```
 
-Configurations here overwrite the built-in support for the corresponding debug adapter type.
-
-### **debugVisualizer.useChromeKioskMode**
-
-Specifies whether to pop out Debug Visualization Views with Chrome in Kiosk Mode. Uses the default browser otherwise or if Chrome is not found. Defaults to `true`.
-
-### **debugVisualizer.js.customScriptPaths**
-
-Specifies a list of JavaScript files that are injected into the debugee when debugging JavaScript.
-Each script must assign `module.exports` with a function of type `import("@hediet/debug-visualizer-data-extraction").LoadDataExtractorsFn`.
-Paths must be absolute and can use the variable `${workspaceFolder}`.
-Scripts are automatically reloaded when they are changed.
-
-Example:
-
-```js
-// @ts-check
-/**
- * @type {import("@hediet/debug-visualizer-data-extraction").LoadDataExtractorsFn}
- */
-module.exports = (register, helpers) => {
-	register({
-		id: "map",
-		getExtractions(data, collector, context) {
-			if (!(data instanceof Map)) {
-				return;
-			}
-
-			collector.addExtraction({
-				priority: 1000,
-				id: "map",
-				name: "Map",
-				extractData() {
-					return helpers.asData({
-						kind: { table: true },
-						rows: [...data].map(([k, v]) => ({
-							key: k,
-							value: v,
-						})),
-					});
-				},
-			});
-		},
-	});
-};
+### Two-Pointer Technique
+```cpp
+Node* slow = head;
+Node* fast = head;
+while (fast && fast->next) {
+    slow = slow->next;
+    fast = fast->next->next;
+}
+// Type "head" - see both pointers highlighted!
 ```
 
-![](../docs/custom-script-map.png)
+---
 
-Use the `helpers` object to access some magic functions.
-`helpers.find(val => ...)` can be used to find an object that is reachable by any variable in scope.
+## 🎬 GIF Recording
 
-# See Also
+Record your debugging session as an animated GIF!
 
-This extension works very well together with my library [`@hediet/node-reload`](https://github.com/hediet/node-reload) for TypeScript/JavaScript.
-Together, they provide an interactive playground.
+```
+# In GDB Debug Console:
+gif_start bubble_sort    # Start recording
+gif_frame arr            # Capture frame (repeat while stepping)
+gif_stop                 # Save to exports/bubble_sort.gif
+```
 
-![](../docs/demo-hot.gif)
+---
 
-# Contributing
+## 🔧 GDB Commands
 
-Feel free to ping me on GitHub by opening an issue!
-Having runtime infrastructures for languages other than JavaScript would be awesome and I happily accept PRs!
+| Command | Description |
+|---------|-------------|
+| `vis <expr>` | Visualize any data structure |
+| `vis_arr <arr> <size>` | Visualize C array |
+| `vis_vec <vector>` | Visualize std::vector |
+| `gif_start <name>` | Start GIF recording |
+| `gif_frame <expr>` | Capture frame |
+| `gif_stop` | Save GIF |
+
+---
+
+## 🤝 Credits
+
+- Fork of [hediet/vscode-debug-visualizer](https://github.com/hediet/vscode-debug-visualizer)
+- Enhanced for **ITI Open Source Applications Development**
+- Created by Muhammad Khaled
+
+---
+
+## 📄 License
+
+GPL-3.0 License - See [LICENSE.md](LICENSE.md)
+
+---
+
+<div align="center">
+
+**Made with ❤️ for C++ developers and DSA learners**
+
+⭐ Star this repo if you find it useful!
+
+</div>
