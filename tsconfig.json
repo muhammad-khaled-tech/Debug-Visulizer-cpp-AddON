@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "ES2017",
+		"outDir": "dist",
+		"lib": ["ES2017"],
+		"sourceMap": true,
+		"rootDir": "src",
+		"strict": true,
+		"skipLibCheck": true,
+		"experimentalDecorators": true
+	},
+	"include": ["src/**/*", "../js-data-extractors/src/Extractors/TypeScriptDataExtractors.ts"]
+}
