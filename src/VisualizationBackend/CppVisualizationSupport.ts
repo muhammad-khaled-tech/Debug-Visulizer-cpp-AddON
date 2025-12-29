@@ -96,7 +96,7 @@ export class CppVisualizationBackend extends VisualizationBackendBase {
     private getVisualizationScriptPath(): string {
         // Get the extension by its ID (publisher.name from package.json)
         // For development, we fall back to __dirname-based resolution
-        const extension = vscode.extensions.getExtension("antigravity-iti.antigravity-debug-visualizer");
+        const extension = vscode.extensions.getExtension("Mohamed-Khaled-ITI.enhanced-debug-visualizer");
 
         if (extension) {
             // Production: use extension path

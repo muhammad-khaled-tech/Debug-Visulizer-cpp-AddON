@@ -1,7 +1,7 @@
 {
-	"name": "antigravity-debug-visualizer",
+	"name": "enhanced-debug-visualizer",
 	"private": false,
-	"displayName": "Antigravity Debug Visualizer",
+	"displayName": "Enhanced Debug Visualizer",
 	"description": "Enhanced C++ data structure visualization for GDB debugging. Visualize arrays, linked lists, trees, stacks, and queues with SVG animations and GIF export.",
 	"icon": "docs/logo.drawio.png",
 	"version": "1.0.0",
@@ -9,7 +9,7 @@
 	"engines": {
 		"vscode": "^1.84.0"
 	},
-	"publisher": "antigravity-iti",
+	"publisher": "Mohamed-Khaled-ITI",
 	"keywords": [
 		"debugger",
 		"debugging",
@@ -26,16 +26,16 @@
 		"svg"
 	],
 	"bugs": {
-		"url": "https://github.com/muhammad-khaled-tech/Debug-Visulizer-cpp-added/issues"
+		"url": "https://github.com/muhammad-khaled-tech/Debug-Visulizer-cpp-AddON/issues"
 	},
 	"author": {
 		"email": "phys.mkhaled@gmail.com",
-		"name": "Muhammad Khaled - ITI"
+		"name": "Mohamed Khaled-ITI"
 	},
 	"readme": "./README.md",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/muhammad-khaled-tech/Debug-Visulizer-cpp-added.git"
+		"url": "https://github.com/muhammad-khaled-tech/Debug-Visulizer-cpp-AddON.git"
 	},
 	"categories": [
 		"Other"

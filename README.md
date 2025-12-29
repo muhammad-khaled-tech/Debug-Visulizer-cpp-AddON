@@ -1,4 +1,4 @@
-# 🚀 Antigravity Debug Visualizer
+# 🚀 Enhanced Debug Visualizer
 
 <div align="center">
 
@@ -31,7 +31,7 @@ This is an **enhanced fork** of the popular Debug Visualizer extension, supercha
 
 ### Option 1: Download from Releases (Recommended)
 1. Go to [Releases](https://github.com/muhammad-khaled-tech/Debug-Visulizer-cpp-AddON/releases)
-2. Download `antigravity-debug-visualizer.vsix`
+2. Download `enhanced-debug-visualizer.vsix`
 3. In VS Code: `Extensions` → `...` menu → `Install from VSIX`
 4. Select the downloaded file
 
@@ -142,7 +142,7 @@ gif_stop                 # Save to exports/bubble_sort.gif
 
 - Fork of [hediet/vscode-debug-visualizer](https://github.com/hediet/vscode-debug-visualizer)
 - Enhanced for **ITI Open Source Applications Development**
-- Created by Muhammad Khaled
+- Created by **Mohamed Khaled-ITI**
 
 ---
 
